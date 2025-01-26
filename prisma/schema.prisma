@@ -1,0 +1,23 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Arcano {
+  id          Int    @id @default(autoincrement())
+  numero      Int    @unique
+  nome        String
+  descricao   String
+  imagem_url  String
+}
+
+model AnoPessoal {
+  id        Int    @id @default(autoincrement())
+  ano       Int
+  cor       String
+  descricao String
+}
