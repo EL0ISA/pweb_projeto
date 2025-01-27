@@ -2,7 +2,7 @@ import React from 'react';
 
 // Função para buscar os dados do ano pessoal
 async function fetchAnoPessoal(ano) {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/ano_pessoal/${ano}`); // Corrigido para a URL correta
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/ano_pessoal/${ano}`);
   if (!response.ok) {
     throw new Error('Erro ao carregar os dados do ano pessoal');
   }
@@ -10,7 +10,7 @@ async function fetchAnoPessoal(ano) {
 }
 
 export default async function AnoPessoalPage({ params }) {
-  const { ano } = params;  // Obtém o ano da URL
+  const { ano } = params; // Obtém o ano da URL
 
   // Busca os dados do ano pessoal da API
   let anoPessoal;
@@ -21,19 +21,37 @@ export default async function AnoPessoalPage({ params }) {
     return <div>Erro ao carregar os dados do ano pessoal</div>;
   }
 
+  // Divide o campo "cor" em um array caso contenha múltiplas cores separadas por vírgula
+  const cores = anoPessoal.cor.split(',');
+
   // Exibição dos dados do ano pessoal
   return (
     <div>
-      <h1>Ano Pessoal {anoPessoal.ano}</h1>
+      <h1>{anoPessoal.nome}</h1>
       <p>{anoPessoal.descricao}</p>
-      <p>Cor: {anoPessoal.cor}</p>
+
+      {/* Exibir quadrados para cada cor */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '16px' }}>
+        <p>Cor(es):</p>
+        {cores.map((cor, index) => (
+          <div
+            key={index}
+            style={{
+              width: '50px',
+              height: '50px',
+              backgroundColor: cor.trim(), // Remove espaços em branco
+              border: '1px solid #000',
+              borderRadius: '4px',
+            }}
+          ></div>
+        ))}
+      </div>
     </div>
   );
 }
 
 // Função para gerar os parâmetros estáticos
 export async function generateStaticParams() {
-  // Aqui você pode buscar todos os anos para gerar as páginas
   const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/ano_pessoal`);
   const anosPessoais = await response.json();
 
@@ -42,4 +60,3 @@ export async function generateStaticParams() {
     ano: anoPessoal.ano.toString(),
   }));
 }
-
