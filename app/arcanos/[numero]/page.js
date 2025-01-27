@@ -2,7 +2,7 @@ import React from 'react';
 
 // Função para buscar os dados do arcano
 async function fetchArcano(numero) {
-  const response = await fetch(`http://localhost:3000/api/arcanos/${numero}`); // Corrigido para a URL correta
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/arcanos/${numero}`); // Corrigido para a URL correta
   if (!response.ok) {
     throw new Error('Erro ao carregar o arcano');
   }
@@ -35,7 +35,7 @@ export default async function ArcanoPage({ params }) {
 export async function generateStaticParams() {
   // Aqui você pode buscar os números dos arcanos que deseja gerar as páginas
   // Exemplo: Buscar todos os números dos arcanos
-  const response = await fetch('http://localhost:3000/api/arcanos');
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/arcanos`);
   const arcanos = await response.json();
 
   // Retorna os números de todos os arcanos para gerar as páginas

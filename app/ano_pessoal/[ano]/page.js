@@ -1,32 +1,45 @@
-import { notFound } from 'next/navigation';
+import React from 'react';
 
-// Função para buscar o Ano Pessoal na API
+// Função para buscar os dados do ano pessoal
 async function fetchAnoPessoal(ano) {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/ano-pessoal?ano=${ano}`);
-  
-  if (!res.ok) {
-    return null; // Retorna `null` se a API não encontrar o registro
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/ano_pessoal/${ano}`); // Corrigido para a URL correta
+  if (!response.ok) {
+    throw new Error('Erro ao carregar os dados do ano pessoal');
   }
-  
-  const anoPessoal = await res.json();
-  return anoPessoal;
+  return response.json();
 }
 
 export default async function AnoPessoalPage({ params }) {
-  const { ano } = params; // Acessando diretamente o `params`
+  const { ano } = params;  // Obtém o ano da URL
 
-  // Busca os dados do Ano Pessoal através da API
-  const anoPessoal = await fetchAnoPessoal(ano);
-
-  if (!anoPessoal) {
-    notFound(); // Redireciona para a página 404 se o registro não for encontrado
+  // Busca os dados do ano pessoal da API
+  let anoPessoal;
+  try {
+    anoPessoal = await fetchAnoPessoal(ano); // Requisição para a API
+  } catch (error) {
+    console.error('Erro ao buscar ano pessoal:', error);
+    return <div>Erro ao carregar os dados do ano pessoal</div>;
   }
 
+  // Exibição dos dados do ano pessoal
   return (
     <div>
-      <h1>Ano Pessoal: {anoPessoal.ano}</h1>
-      <p>Cor: <strong style={{ color: anoPessoal.cor }}>{anoPessoal.cor}</strong></p>
-      <p>Descrição: {anoPessoal.descricao}</p>
+      <h1>Ano Pessoal {anoPessoal.ano}</h1>
+      <p>{anoPessoal.descricao}</p>
+      <p>Cor: {anoPessoal.cor}</p>
     </div>
   );
 }
+
+// Função para gerar os parâmetros estáticos
+export async function generateStaticParams() {
+  // Aqui você pode buscar todos os anos para gerar as páginas
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/ano_pessoal`);
+  const anosPessoais = await response.json();
+
+  // Retorna os anos de todos os anos pessoais para gerar as páginas
+  return anosPessoais.map((anoPessoal) => ({
+    ano: anoPessoal.ano.toString(),
+  }));
+}
+

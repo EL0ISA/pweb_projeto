@@ -17,7 +17,7 @@ model Arcano {
 
 model AnoPessoal {
   id        Int    @id @default(autoincrement())
-  ano       Int
+  ano       Int    @unique
   cor       String
   descricao String
 }
