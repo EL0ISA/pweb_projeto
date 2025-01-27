@@ -1,7 +1,7 @@
 import prisma from '@/lib/prisma';
 
 export async function GET(request, { params }) {
-  const { numero } = params;  // Obtém o parâmetro da URL (número)
+  const { numero } = await params;  // Obtém o parâmetro da URL (número)
 
   try {
     const arcano = await prisma.arcano.findUnique({

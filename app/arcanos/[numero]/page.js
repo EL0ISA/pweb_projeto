@@ -10,7 +10,7 @@ async function fetchArcano(numero) {
 }
 
 export default async function ArcanoPage({ params }) {
-  const { numero } = params;  // Obtém o número do arcano da URL
+  const { numero } = await params;  // Obtém o número do arcano da URL
 
   // Busca os dados do arcano da API
   let arcano;
@@ -27,6 +27,13 @@ export default async function ArcanoPage({ params }) {
       <h1>{arcano.nome}</h1>
       <p>{arcano.descricao}</p>
       <p>Cor: {arcano.cor}</p>
+      {arcano.imagem_url && (
+        <img
+          src={arcano.imagem_url}
+          alt={`Imagem do arcano ${arcano.nome}`}
+          style={{ width: '300px', height: 'auto', borderRadius: '8px', marginTop: '16px' }}
+        />
+      )}
     </div>
   );
 }
@@ -43,4 +50,5 @@ export async function generateStaticParams() {
     numero: arcano.numero.toString(),
   }));
 }
+
 
