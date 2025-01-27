@@ -18,6 +18,7 @@ model Arcano {
 model AnoPessoal {
   id        Int    @id @default(autoincrement())
   ano       Int    @unique
+  nome      String ?
   cor       String
   descricao String
 }

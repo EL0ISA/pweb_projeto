@@ -26,7 +26,6 @@ export default async function ArcanoPage({ params }) {
     <div>
       <h1>{arcano.nome}</h1>
       <p>{arcano.descricao}</p>
-      <p>Cor: {arcano.cor}</p>
       {arcano.imagem_url && (
         <img
           src={arcano.imagem_url}
