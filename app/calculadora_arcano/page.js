@@ -171,13 +171,13 @@ export default function Arcano() {
               </div>
               {arcanoPessoal && (
                 <div className="mt-4">
-                  <p>
+                  <h6>
                     <strong>Arcano Pessoal:</strong> {arcanoPessoal}
-                  </p>
+                  </h6>
                   {arcanoDetailsPessoal && (
                     <div>
                       <h3>{arcanoDetailsPessoal.nome}</h3>
-                      <p>{arcanoDetailsPessoal.descricao}</p>
+
                       <button
                         className="btn btn-warning w-50 mt-2"
                         onClick={() => router.push(`/arcanos/${arcanoPessoal}`)}
@@ -222,13 +222,13 @@ export default function Arcano() {
 
               {arcanoAnual && (
                 <div className="mt-4">
-                  <p>
+                  <h6>
                     <strong>Arcano Anual:</strong> {arcanoAnual}
-                  </p>
+                  </h6>
                   {arcanoDetailsAnual && (
                     <div>
                       <h3>{arcanoDetailsAnual.nome}</h3>
-                      <p>{arcanoDetailsAnual.descricao}</p>
+
                       <button
                         className="btn btn-warning w-50 mt-2"
                         onClick={() => router.push(`/arcanos/${arcanoAnual}`)}

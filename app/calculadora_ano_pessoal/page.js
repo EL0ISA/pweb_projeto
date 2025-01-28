@@ -137,13 +137,9 @@ export default function AnoPessoal() {
 
               {anoPessoal && (
                 <div className="mt-4">
-                  <p>
-                    <strong>Ano Pessoal:</strong> {anoPessoal}
-                  </p>
                   {anoPessoalDetails && (
                     <div>
                       <h3>{anoPessoalDetails.nome}</h3>
-                      <p>{anoPessoalDetails.descricao}</p>
                       <button
                         className="btn btn-warning w-50 mt-2"
                         onClick={() =>
