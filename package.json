@@ -13,8 +13,12 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@popperjs/core": "^2.11.8",
     "@prisma/client": "^6.2.1",
-    "next": "^15.1.6",
+    "bootstrap": "^5.3.3",
+    "next": "^15.1.6"
+  },
+  "devDependencies": {
     "prisma": "^6.2.1"
   }
 }
