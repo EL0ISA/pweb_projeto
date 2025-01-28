@@ -10,9 +10,10 @@ export default function Nav() {
   }
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-black fixed-top">
       <div className="container">
-        <a className="navbar-brand" href="#page-top">
+        <a className="navbar-brand" href="/">
+          <img src="/logo.png" alt="Logo" style={{ width: "70px" }} />
           Fate Cycles
         </a>
         <button
@@ -33,8 +34,13 @@ export default function Nav() {
         >
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
-              <a className="nav-link" href="#about-us">
-                Sobre Nós
+              <a className="nav-link" href="/calculadora_ano_pessoal">
+                Ano Pessoal
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="/calculadora_arcano">
+                Arcano pessoal
               </a>
             </li>
           </ul>

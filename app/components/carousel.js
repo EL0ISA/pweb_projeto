@@ -35,11 +35,14 @@ export default function Carousel() {
         {/* Carousel inner */}
         <div className="carousel-inner">
           <div className="carousel-item active">
-            <img
-              className="img-responsive d-block w-100"
-              src="/carousel_0.png"
-              alt="carousel image 1"
-            />
+            <Link href="#">
+              {" "}
+              <img
+                className="img-responsive d-block w-100"
+                src="/carousel_0.png"
+                alt="carousel image 1"
+              />
+            </Link>
             <div className="slider-content text-center"></div>
           </div>
           {/*/ Carousel item end */}

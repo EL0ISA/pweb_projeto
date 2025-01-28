@@ -9,16 +9,19 @@ export default function About() {
     }
   }, []);
   return (
-    <section id="about-us" className="about-us-section-1">
+    <section id="about-us" className="about-us-section-1 bg-black white-text">
       <div className="container">
         <div className="row">
           <div className="col-md-12 col-sm-12">
             <div className="section-title text-center">
               <h3>Sobre Nós</h3>
               <p>
-                O projeto foi elaborado para a disciplina de Programação WEB,
-                onde ele calcula seu ano e arcanopessoal. <br />
-                Foi desenvolvido por:
+                Este projeto foi desenvolvido como parte da disciplina de
+                Programação WEB, com o objetivo de proporcionar uma experiência
+                interativa para os usuários. Ele permite calcular o Ano Pessoal
+                e o Arcano Pessoal, ferramentas baseadas na Numerologia, que
+                ajudam a entender os ciclos de vida de uma pessoa de acordo com
+                o seu nascimento.
               </p>
             </div>
           </div>
