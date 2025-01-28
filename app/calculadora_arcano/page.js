@@ -179,8 +179,8 @@ export default function Arcano() {
                       <h3>{arcanoDetailsPessoal.nome}</h3>
                       <p>{arcanoDetailsPessoal.descricao}</p>
                       <button
-                        className="btn btn-info"
-                        onClick={() => alert(`Detalhes do ${arcanoPessoal}`)}
+                        className="btn btn-warning w-50 mt-2"
+                        onClick={() => router.push(`/arcanos/${arcanoPessoal}`)}
                       >
                         Mais Detalhes
                       </button>
@@ -230,8 +230,8 @@ export default function Arcano() {
                       <h3>{arcanoDetailsAnual.nome}</h3>
                       <p>{arcanoDetailsAnual.descricao}</p>
                       <button
-                        className="btn btn-info"
-                        onClick={() => alert(`Detalhes do ${arcanoAnual}`)}
+                        className="btn btn-warning w-50 mt-2"
+                        onClick={() => router.push(`/arcanos/${arcanoAnual}`)}
                       >
                         Mais Detalhes
                       </button>

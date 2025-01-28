@@ -1,11 +1,11 @@
-import { notFound } from 'next/navigation';
+import { notFound } from "next/navigation";
 
 // Função para buscar todos os anos pessoais
 async function fetchAllAnosPessoais() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/ano_pessoal`);
 
   if (!res.ok) {
-    throw new Error('Erro ao carregar os anos pessoais');
+    throw new Error("Erro ao carregar os anos pessoais");
   }
 
   const anosPessoais = await res.json();

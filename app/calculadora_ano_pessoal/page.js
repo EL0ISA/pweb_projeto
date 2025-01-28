@@ -145,8 +145,10 @@ export default function AnoPessoal() {
                       <h3>{anoPessoalDetails.nome}</h3>
                       <p>{anoPessoalDetails.descricao}</p>
                       <button
-                        className="btn btn-info"
-                        onClick={() => alert(`Detalhes do ${anoPessoal}`)}
+                        className="btn btn-warning w-50 mt-2"
+                        onClick={() =>
+                          router.push(`/ano_pessoal/${anoPessoal}`)
+                        }
                       >
                         Mais Detalhes
                       </button>
