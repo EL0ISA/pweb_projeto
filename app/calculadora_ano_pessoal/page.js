@@ -13,7 +13,7 @@ const somarDigitos = (numero) => {
 
 // Função para buscar os dados do ano pessoal no banco
 async function fetchAnoPessoal(ano) {
-  const response = await fetch(`http://localhost:3000/api/ano_pessoal/${ano}`);
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/ano_pessoal/${ano}`);
   if (!response.ok) {
     throw new Error('Erro ao carregar o ano pessoal');
   }

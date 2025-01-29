@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 
 // Função para buscar os dados do arcano
 async function fetchArcano(numero) {
-  const response = await fetch(`http://localhost:3000/api/arcanos/${numero}`);
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/arcanos/${numero}`);
   if (!response.ok) {
     throw new Error('Erro ao carregar o arcano');
   }
